@@ -114,7 +114,9 @@ public final class AudioDevice: AudioObject {
         guard owningObject != nil else { return nil }
 
         cachedDeviceName = getDeviceName()
+      if AudioDevice.register {
         registerForNotifications()
+      }
         AudioObjectPool.instancePool.setObject(self, forKey: NSNumber(value: UInt(objectID)))
     }
 
@@ -122,6 +124,8 @@ public final class AudioDevice: AudioObject {
         unregisterForNotifications()
         AudioObjectPool.instancePool.removeObject(forKey: NSNumber(value: UInt(objectID)))
     }
+  
+  static var register = false
 
     // MARK: - Class Functions
 

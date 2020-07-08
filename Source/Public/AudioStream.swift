@@ -274,6 +274,8 @@ public final class AudioStream: AudioObject {
 
         return instance
     }
+  
+  static var register = false
 
     /// Initializes an `AudioStream` by providing a valid `AudioObjectID` referencing an existing audio stream.
     private init?(id: AudioObjectID) {
@@ -281,7 +283,9 @@ public final class AudioStream: AudioObject {
 
         guard owningObject != nil else { return nil }
 
+      if AudioStream.register {
         registerForNotifications()
+      }
         AudioObjectPool.instancePool.setObject(self, forKey: NSNumber(value: UInt(objectID)))
     }
 

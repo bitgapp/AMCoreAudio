@@ -39,8 +39,16 @@ public final class NotificationCenter {
             subscriberDescriptorsByEvent[type] = []
 
             if eventType is AudioHardwareEvent.Type {
-                AudioHardware.sharedInstance.enableDeviceMonitoring()
+              AudioHardware.sharedInstance.enableDeviceMonitoring()
             }
+          
+          if eventType is AudioDeviceEvent.Type {
+            AudioDevice.register = true
+          }
+          
+          if eventType is AudioStreamEvent.Type {
+            AudioStream.register = true
+          }
         }
 
         let descriptor = EventSubscriberDescriptor(subscriber: subscriber, queue: dispatchQueue)
