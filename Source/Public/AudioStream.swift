@@ -275,7 +275,7 @@ public final class AudioStream: AudioObject {
         return instance
     }
   
-  static var register = false
+  static public var register = false
 
     /// Initializes an `AudioStream` by providing a valid `AudioObjectID` referencing an existing audio stream.
     private init?(id: AudioObjectID) {

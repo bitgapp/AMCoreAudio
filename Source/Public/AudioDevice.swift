@@ -125,7 +125,7 @@ public final class AudioDevice: AudioObject {
         AudioObjectPool.instancePool.removeObject(forKey: NSNumber(value: UInt(objectID)))
     }
   
-  static var register = false
+  static public var register = false
 
     // MARK: - Class Functions
 
